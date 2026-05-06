@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Saint Martin's Abbey – Arts</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<nav class="navbar">
+  <a href="index.html" class="nav-logo">Saint Martin's Abbey<span>Arts</span></a>
+  <ul class="nav-links">
+    <li><a href="index.html"       data-page="index.html" class="active">Home</a></li>
+    <li><a href="gallery.html"     data-page="gallery.html">Gallery</a></li>
+    <li><a href="artists.html"     data-page="artists.html">Artists</a></li>
+    <li><a href="exhibitions.html" data-page="exhibitions.html">Exhibitions</a></li>
+    <li><a href="contact.html"     data-page="contact.html">Contact Us</a></li>
+  </ul>
+  <div class="nav-search" id="nav-search">
+    <button class="nav-search-toggle" id="nav-search-toggle" aria-label="Search artworks">
+      <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+    </button>
+    <input class="nav-search-input" id="nav-search-input" type="text" placeholder="Search artworks…" autocomplete="off">
+    <div class="nav-search-dropdown" id="nav-search-dropdown"></div>
+  </div>
+  <a href="login.html" class="nav-login-btn">Login</a>
+  <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+</nav>
+
+<section class="home-hero">
+  <p class="label">Founded 1895 · Lacey, Washington</p>
+  <h1>Where <em>Sacred</em> &nbsp;Meets Art</h1>
+  <p>Since 1980, Saint Martin's Abbey has presented over 150 classical concerts and scholarly lectures in the Abbey — open to all, always free of charge.</p>
+  <div class="hero-btns">
+    <a href="gallery.html"     class="btn btn-primary">Explore Gallery</a>
+    <a href="exhibitions.html" class="btn btn-outline">View Exhibitions</a>
+  </div>
+  <div class="stats-strip">
+    <div class="stat"><div class="stat-num">150+</div><div class="stat-lbl"> Lectures</div></div>
+    <div class="stat"><div class="stat-num">1895</div><div class="stat-lbl">Abbey Founded</div></div>
+    <div class="stat"><div class="stat-num">Free</div><div class="stat-lbl">Admission Always</div></div>
+    <div class="stat"><div class="stat-num">20</div>  <div class="stat-lbl">Benedictine Monks</div></div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div style="display:grid;grid-template-columns:1fr 420px;gap:3.5rem;align-items:center">
+      <div>
+        <p class="label">Our Mission</p>
+        <h2 class="section-title">A Benedictine Tradition of Beauty</h2>
+        <div class="divider"></div>
+        <p class="section-text">
+          Founded in 1895 by monks from Saint John's Abbey in Minnesota, Saint Martin's Abbey follows the Rule of St. Benedict — a way of life built on community, hospitality, and the dignity of work. Since 1980 the Abbey Events series has brought the world's finest chamber musicians and scholars to Lacey, Washington. Every event is an act of welcome: open doors, open hearts, no charge at the door.
+        </p>
+      </div>
+      <div style="border-radius:4px;overflow:hidden;aspect-ratio:4/3;background:var(--surface2);display:flex;align-items:center;justify-content:center;border:1px solid var(--border)">
+        <div style="text-align:center;color:var(--muted);padding:2rem">
+          <div style="font-size:3.5rem;margin-bottom:.75rem;opacity:.35">⛪</div>
+          <p style="font-family:var(--font-ui);font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;opacity:.5">Saint Martin's Abbey · Lacey, WA</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Benedictine Values -->
+<section class="section surface2-section">
+  <div class="container">
+    <p class="label text-center">The Benedictine Way</p>
+    <h2 class="section-title text-center">Six Values That Shape Our Work</h2>
+    <div class="divider center"></div>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:2.5rem">
+      <div style="padding:1.8rem;background:white;border-bottom:2px solid var(--accent)">
+        <div style="font-size:1.6rem;margin-bottom:.7rem">🤝</div>
+        <h3 style="font-family:var(--font-head);font-size:1rem;font-weight:600;margin-bottom:.4rem">Community</h3>
+        <p style="font-family:var(--font-ui);font-size:.8rem;color:var(--muted);line-height:1.65">Service for the common good, respecting each person's gifts.</p>
+      </div>
+      <div style="padding:1.8rem;background:white;border-bottom:2px solid var(--accent)">
+        <div style="font-size:1.6rem;margin-bottom:.7rem">🚪</div>
+        <h3 style="font-family:var(--font-head);font-size:1rem;font-weight:600;margin-bottom:.4rem">Hospitality</h3>
+        <p style="font-family:var(--font-ui);font-size:.8rem;color:var(--muted);line-height:1.65">Welcoming all guests as if they were Christ himself.</p>
+      </div>
+      <div style="padding:1.8rem;background:white;border-bottom:2px solid var(--accent)">
+        <div style="font-size:1.6rem;margin-bottom:.7rem">🌿</div>
+        <h3 style="font-family:var(--font-head);font-size:1rem;font-weight:600;margin-bottom:.4rem">Stewardship</h3>
+        <p style="font-family:var(--font-ui);font-size:.8rem;color:var(--muted);line-height:1.65">Caring for resources and protecting the natural surroundings.</p>
+      </div>
+      <div style="padding:1.8rem;background:white;border-bottom:2px solid var(--accent)">
+        <div style="font-size:1.6rem;margin-bottom:.7rem">👂</div>
+        <h3 style="font-family:var(--font-head);font-size:1rem;font-weight:600;margin-bottom:.4rem">Listening</h3>
+        <p style="font-family:var(--font-ui);font-size:.8rem;color:var(--muted);line-height:1.65">Attentive discernment and thoughtful dialogue.</p>
+      </div>
+      <div style="padding:1.8rem;background:white;border-bottom:2px solid var(--accent)">
+        <div style="font-size:1.6rem;margin-bottom:.7rem">🔨</div>
+        <h3 style="font-family:var(--font-head);font-size:1rem;font-weight:600;margin-bottom:.4rem">Dignity of Work</h3>
+        <p style="font-family:var(--font-ui);font-size:.8rem;color:var(--muted);line-height:1.65">Respect for all labour and service — <em>Ora et Labora</em>.</p>
+      </div>
+      <div style="padding:1.8rem;background:white;border-bottom:2px solid var(--accent)">
+        <div style="font-size:1.6rem;margin-bottom:.7rem">⚓</div>
+        <h3 style="font-family:var(--font-head);font-size:1rem;font-weight:600;margin-bottom:.4rem">Stability</h3>
+        <p style="font-family:var(--font-ui);font-size:.8rem;color:var(--muted);line-height:1.65">Standing firm in promises, caring for community across generations.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section surface2-section">
+  <div class="container">
+    <p class="label">Featured</p>
+    <h2 class="section-title">Recent Highlights</h2>
+    <div class="feat-grid">
+      <a href="exhibitions.html" class="feat-card">
+        <div class="f-tag">Current Exhibition</div>
+        <div class="f-title">Strings of Eternity</div>
+        <div class="f-sub">Through May 2026</div>
+      </a>
+      <a href="gallery.html" class="feat-card">
+        <div class="f-tag">Gifted to the Abbey</div>
+        <div class="f-title">Illuminated Vespers</div>
+        <div class="f-sub">A generous bequest to the collection</div>
+      </a>
+      <a href="gallery.html" class="feat-card">
+        <div class="f-tag">Search the Collection</div>
+        <div class="f-title">Browse All Works</div>
+        <div class="f-sub">Use the search icon above</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <h3>Saint Martin's Abbey</h3>
+      <p>5000 Abbey Way SE · Lacey, WA 98503<br>360-491-4700</p>
+      <p class="mt-2">Mass: Mon–Fri 4:45 PM · Sat 8 AM · Sun 11 AM</p>
+    </div>
+    <div class="footer-col"><h4>Explore</h4><ul>
+      <li><a href="gallery.html">Gallery</a></li>
+      <li><a href="exhibitions.html">Exhibitions</a></li>
+    </ul></div>
+    <div class="footer-col"><h4>Connect</h4><ul>
+      <li><a href="contact.html">Contact Us</a></li>
+      <li><a href="donors.html">Support the Arts</a></li>
+    </ul></div>
+    <div class="footer-col"><h4>Hours</h4><ul>
+      <li>Tue – Sun</li><li>10 AM – 5 PM</li>
+    </ul></div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 Saint Martin's Abbey</span>
+    <span>Privacy Policy</span>
+  </div>
+</footer>
+
+<div id="toast"></div>
+<script src="js/api.js"></script>
+</body>
+</html>

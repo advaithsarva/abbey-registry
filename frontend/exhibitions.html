@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Exhibitions – Saint Martin's Abbey</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<nav class="navbar">
+  <a href="index.html" class="nav-logo">Saint Martin's Abbey<span>Arts</span></a>
+  <ul class="nav-links">
+    <li><a href="index.html"       data-page="index.html">Home</a></li>
+    <li><a href="gallery.html"     data-page="gallery.html">Gallery</a></li>
+    <li><a href="artists.html"     data-page="artists.html">Artists</a></li>
+    <li><a href="exhibitions.html" data-page="exhibitions.html" class="active">Exhibitions</a></li>
+    <li><a href="contact.html"     data-page="contact.html">Contact Us</a></li>
+  </ul>
+  <div class="nav-search" id="nav-search">
+    <button class="nav-search-toggle" id="nav-search-toggle" aria-label="Search artworks">
+      <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+    </button>
+    <input class="nav-search-input" id="nav-search-input" type="text" placeholder="Search artworks…" autocomplete="off">
+    <div class="nav-search-dropdown" id="nav-search-dropdown"></div>
+  </div>
+  <a href="login.html" class="nav-login-btn">Login</a>
+  <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+</nav>
+
+<div class="page-header">
+  <p class="label">Arts Programme · 2025–26 Season</p>
+  <h1>Exhibitions &amp; Performances</h1>
+  <p>Since 1980, Saint Martin's Abbey has presented over 150 scholarly lectures and live performances in the Abbey — always free and open to the public.</p>
+</div>
+
+<!-- About the Abbey — static venue info, not event data -->
+<div style="background:var(--cream);padding:3rem 2rem">
+  <div style="max-width:860px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center">
+    <div>
+      <p class="label" style="margin-bottom:.5rem">The Venue</p>
+      <h2 style="font-family:var(--font-head);font-size:1.6rem;font-weight:600;margin-bottom:1rem">The Abbey</h2>
+      <div class="divider"></div>
+      <p style="color:var(--muted);line-height:1.8;font-size:.93rem;margin-top:1rem">
+        Completed in 1971 and designed by Bennett, Johnson &amp; Associates of Olympia, the Abbey is an octagonal worship space built of brick and western red cedar. Flexible seating surrounds a moveable altar, making it ideal for both liturgy and live performance. At its heart sits a <strong>Steinway Concert Grand Piano</strong>.
+      </p>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem">
+      <div style="padding:1.2rem;background:white;border-bottom:2px solid var(--accent);text-align:center">
+        <div style="font-size:1.8rem;margin-bottom:.5rem">🎹</div>
+        <div style="font-family:var(--font-ui);font-size:.72rem;text-transform:uppercase;letter-spacing:.1em;color:var(--muted)">Steinway Grand</div>
+      </div>
+      <div style="padding:1.2rem;background:white;border-bottom:2px solid var(--accent);text-align:center">
+        <div style="font-size:1.8rem;margin-bottom:.5rem">🎻</div>
+        <div style="font-family:var(--font-ui);font-size:.72rem;text-transform:uppercase;letter-spacing:.1em;color:var(--muted)">Chamber Music</div>
+      </div>
+      <div style="padding:1.2rem;background:white;border-bottom:2px solid var(--accent);text-align:center">
+        <div style="font-size:1.8rem;margin-bottom:.5rem">🎙️</div>
+        <div style="font-family:var(--font-ui);font-size:.72rem;text-transform:uppercase;letter-spacing:.1em;color:var(--muted)">Scholarly Lectures</div>
+      </div>
+      <div style="padding:1.2rem;background:white;border-bottom:2px solid var(--accent);text-align:center">
+        <div style="font-size:1.8rem;margin-bottom:.5rem">🆓</div>
+        <div style="font-family:var(--font-ui);font-size:.72rem;text-transform:uppercase;letter-spacing:.1em;color:var(--muted)">Open to All</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Dynamic exhibition list — populated by exhibitions.js -->
+<div class="ex-list" id="ex-list"></div>
+
+<footer class="site-footer">
+  <div class="footer-grid">
+    <div class="footer-brand"><h3>Saint Martin's Abbey</h3><p>5000 Abbey Way SE · Lacey, WA 98503</p></div>
+    <div class="footer-col"><h4>Navigate</h4><ul>
+      <li><a href="gallery.html">Gallery</a></li>
+      <li><a href="contact.html">Contact Us</a></li>
+    </ul></div>
+    <div class="footer-col"><h4>Support</h4><ul>
+      <li><a href="donors.html">Donate</a></li>
+    </ul></div>
+    <div class="footer-col"><h4>Hours</h4><ul><li>Tue–Sun · 10 AM–5 PM</li></ul></div>
+  </div>
+  <div class="footer-bottom"><span>© 2026 Saint Martin's Abbey</span><span>Privacy Policy</span></div>
+</footer>
+
+<div id="toast"></div>
+<script src="js/api.js"></script>
+<script src="js/exhibitions.js"></script>
+</body>
+</html>

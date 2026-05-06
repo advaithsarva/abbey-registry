@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gallery – Saint Martin's Abbey</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+  <a href="index.html" class="nav-logo">Saint Martin's Abbey<span>Arts</span></a>
+  <ul class="nav-links">
+    <li><a href="index.html"       data-page="index.html">Home</a></li>
+    <li><a href="gallery.html"     data-page="gallery.html" class="active">Gallery</a></li>
+    <li><a href="artists.html"     data-page="artists.html">Artists</a></li>
+    <li><a href="exhibitions.html" data-page="exhibitions.html">Exhibitions</a></li>
+    <li><a href="contact.html"     data-page="contact.html">Contact Us</a></li>
+  </ul>
+  <div class="nav-search" id="nav-search">
+    <button class="nav-search-toggle" id="nav-search-toggle" aria-label="Search artworks">
+      <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+    </button>
+    <input class="nav-search-input" id="nav-search-input" type="text" placeholder="Search artworks…" autocomplete="off">
+    <div class="nav-search-dropdown" id="nav-search-dropdown"></div>
+  </div>
+  <a href="login.html" class="nav-login-btn">Login</a>
+  <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+</nav>
+
+<!-- PAGE HEADER -->
+<div class="page-header">
+  <p class="label">The Abbey Collection</p>
+  <h1>Gallery</h1>
+  <p>Browse all published artworks. Click any piece to view full details.</p>
+  <!-- Search bar specific to the gallery -->
+  <div class="gallery-search-bar">
+    <input id="gallery-search" type="text" placeholder="Search by title, artist, medium…">
+    <button id="search-btn" class="btn btn-primary">Search</button>
+  </div>
+</div>
+
+<!-- FILTER BUTTONS -->
+<div class="filter-row">
+  <button class="filter-btn active" data-filter="all">All Works</button>
+  <button class="filter-btn" data-filter="oil">Painting</button>
+  <button class="filter-btn" data-filter="photo">Photography</button>
+  <button class="filter-btn" data-filter="watercolour">Watercolour</button>
+  <button class="filter-btn" data-filter="mixed">Mixed Media</button>
+  <button class="filter-btn" data-filter="acrylic">Acrylic</button>
+</div>
+
+<!-- ARTWORK GRID -->
+<div id="gallery-grid" class="card-grid"></div>
+
+<!-- ARTWORK DETAIL MODAL -->
+<div class="modal-overlay" id="artwork-modal">
+  <div class="modal-box">
+    <button class="modal-close" id="modal-close">×</button>
+    <div id="modal-body"></div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="footer-grid">
+    <div class="footer-brand"><h3>Saint Martin's Abbey</h3><p>5000 Abbey Way SE · Lacey, WA 98503</p></div>
+    <div class="footer-col"><h4>Navigate</h4><ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="exhibitions.html">Exhibitions</a></li>
+    </ul></div>
+    <div class="footer-col"><h4>Support</h4><ul>
+      <li><a href="donors.html">Donate</a></li>
+      <li><a href="contact.html">Contact Us</a></li>
+    </ul></div>
+    <div class="footer-col"><h4>Hours</h4><ul><li>Tue–Sun</li><li>10 AM – 5 PM</li></ul></div>
+  </div>
+  <div class="footer-bottom"><span>© 2026 Saint Martin's Abbey</span><span>Privacy Policy</span></div>
+</footer>
+
+<div id="toast"></div>
+<script src="js/api.js"></script>
+<script src="js/gallery.js"></script>
+</body>
+</html>

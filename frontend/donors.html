@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Give to the Abbey – Saint Martin's Abbey</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<nav class="navbar">
+  <a href="index.html" class="nav-logo">Saint Martin's Abbey<span>Arts</span></a>
+  <ul class="nav-links">
+    <li><a href="index.html"       data-page="index.html">Home</a></li>
+    <li><a href="gallery.html"     data-page="gallery.html">Gallery</a></li>
+    <li><a href="artists.html"     data-page="artists.html">Artists</a></li>
+    <li><a href="exhibitions.html" data-page="exhibitions.html">Exhibitions</a></li>
+    <li><a href="contact.html"     data-page="contact.html">Contact Us</a></li>
+  </ul>
+  <div class="nav-search" id="nav-search">
+    <button class="nav-search-toggle" id="nav-search-toggle" aria-label="Search artworks">
+      <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+    </button>
+    <input class="nav-search-input" id="nav-search-input" type="text" placeholder="Search artworks…" autocomplete="off">
+    <div class="nav-search-dropdown" id="nav-search-dropdown"></div>
+  </div>
+  <a href="login.html" class="nav-login-btn">Login</a>
+  <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+</nav>
+
+<div class="page-header">
+  <p class="label">A Work of Generosity</p>
+  <h1>Give to the Abbey</h1>
+  <p>For over a century the monks of Saint Martin's have held open doors and open hearts. Your gift sustains that welcome — keeping every performance and exhibition free to all who come.</p>
+</div>
+
+<section class="section">
+  <div class="container">
+    <p class="label text-center">An Offering of Hospitality</p>
+    <h2 class="section-title text-center">Sustaining a Sacred Tradition</h2>
+    <div class="divider center"></div>
+    <p class="section-text center text-center">
+      Founded in 1895, Saint Martin's Abbey has welcomed guests in the spirit of St. Benedict for over a century. The Abbey Events series — launched in 1980 — has offered more than 150 performances and lectures with never a ticket price. The series endures through a small endowment, freewill offerings, and the faithfulness of those who believe beauty belongs to everyone.
+    </p>
+
+    <div class="tier-grid">
+      <div class="tier" onclick="showToast('Thank you! Redirecting to payment…')">
+        <div class="tier-badge">Friend of the Abbey</div>
+        <div class="tier-amount">$100</div>
+        <div class="tier-per">annual gift</div>
+        <ul class="tier-features">
+          <li>Season programme</li>
+          <li>Advance notice of events</li>
+          <li>Name in the season programme</li>
+        </ul>
+        <button class="btn btn-outline-light btn-full">Offer a Gift</button>
+      </div>
+      <div class="tier featured" onclick="showToast('Thank you! Redirecting to payment…')">
+        <div class="tier-badge">Patron</div>
+        <div class="tier-amount">$500</div>
+        <div class="tier-per">annual gift</div>
+        <ul class="tier-features">
+          <li>All Friend courtesies</li>
+          <li>Invitation to artist receptions</li>
+          <li>Private tour of the collection</li>
+          <li>Name inscribed in the donor record</li>
+        </ul>
+        <button class="btn btn-outline-light btn-full">Give in Stewardship</button>
+      </div>
+      <div class="tier" onclick="showToast('Thank you! Redirecting to payment…')">
+        <div class="tier-badge">Benefactor</div>
+        <div class="tier-amount">$2,500</div>
+        <div class="tier-per">annual gift</div>
+        <ul class="tier-features">
+          <li>All Patron courtesies</li>
+          <li>Named sponsorship of a performance</li>
+          <li>Masterclass invitation</li>
+          <li>Permanent endowment recognition</li>
+        </ul>
+        <button class="btn btn-outline-light btn-full">Become a Benefactor</button>
+      </div>
+    </div>
+
+    <div class="donor-wall">
+      <p class="label">Remembered in Gratitude</p>
+      <h2 class="contact-title">Those Who Made It Possible</h2>
+      <p class="muted mt-2">With deep thanks to those whose generosity sustained the 2024–25 season.</p>
+      <div class="donor-names">
+        <span class="donor-chip">Eleanor &amp; Thomas Winthrop</span>
+        <span class="donor-chip">The Hartwell Family Trust</span>
+        <span class="donor-chip">Dr. Cecilia Voss</span>
+        <span class="donor-chip">Anonymous</span>
+        <span class="donor-chip">James &amp; Ruth Albright</span>
+        <span class="donor-chip">Saint Martin's University Alumni</span>
+        <span class="donor-chip">The Benedictine Oblates of WA</span>
+        <span class="donor-chip">Pacific NW Arts Fund</span>
+        <span class="donor-chip">In Memory of Fr. Benedict Ashworth, O.S.B.</span>
+        <span class="donor-chip">Olympia Symphony Guild</span>
+        <span class="donor-chip">Catherine R. Hollis</span>
+        <span class="donor-chip">Anonymous</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="footer-grid">
+    <div class="footer-brand"><h3>Saint Martin's Abbey</h3><p>5000 Abbey Way SE · Lacey, WA 98503</p></div>
+    <div class="footer-col"><h4>Navigate</h4><ul>
+      <li><a href="gallery.html">Gallery</a></li>
+      <li><a href="exhibitions.html">Exhibitions</a></li>
+    </ul></div>
+    <div class="footer-col"><h4>Giving</h4><ul>
+      <li>Endowment Fund</li>
+      <li>Bequests</li>
+      <li>In-Kind Gifts</li>
+    </ul></div>
+    <div class="footer-col"><h4>Tax Info</h4><ul>
+      <li>501(c)(3) Organisation</li>
+      <li>EIN on Request</li>
+    </ul></div>
+  </div>
+  <div class="footer-bottom"><span>© 2026 Saint Martin's Abbey</span><span>Privacy Policy</span></div>
+</footer>
+
+<div id="toast"></div>
+<script src="js/api.js"></script>
+</body>
+</html>

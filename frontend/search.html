@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Search – Saint Martin's Abbey</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .search-hero {
+      background: var(--ink); padding: 140px 2rem 80px;
+      text-align: center; position: relative; overflow: hidden;
+    }
+    .search-hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse at center, rgba(184,150,90,.07), transparent 65%);
+      animation: fadeIn 2s ease;
+    }
+    /* Animated typing cursor on heading */
+    .search-hero h1 span { border-right: 2px solid var(--gold); animation: blink 1s infinite; }
+    @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
+
+    .big-search {
+      display: flex; max-width: 660px; margin: 2.5rem auto 0;
+      box-shadow: 0 10px 50px rgba(0,0,0,.35);
+      animation: fadeUp .8s .6s both;
+      position: relative;
+    }
+    .big-search input {
+      flex: 1; padding: 1.1rem 1.5rem;
+      background: var(--warm-white); border: none; color: var(--ink);
+      font-family: var(--font-body); font-size: 1.1rem; outline: none;
+    }
+    .big-search button {
+      padding: 1.1rem 2rem; background: var(--gold); color: var(--ink);
+      border: none; cursor: pointer; font-family: var(--font-ui);
+      font-size: .75rem; letter-spacing: .2em; text-transform: uppercase;
+      font-weight: 500; transition: background .2s;
+    }
+    .big-search button:hover { background: var(--gold-light); }
+
+    /* Suggested chips */
+    .chips { display: flex; flex-wrap: wrap; gap: .6rem; justify-content: center; margin-top: 1.8rem; animation: fadeUp .8s .8s both; }
+    .chip {
+      font-family: var(--font-ui); font-size: .7rem; letter-spacing: .1em;
+      text-transform: uppercase; padding: .4rem 1rem;
+      border: 1px solid rgba(184,150,90,.28); color: rgba(247,242,234,.5);
+      cursor: pointer; border-radius: 20px; background: transparent; transition: .2s;
+    }
+    .chip:hover { border-color: var(--gold); color: var(--gold); background: rgba(184,150,90,.08); }
+
+    /* How it works */
+    .how-it-works {
+      background: var(--cream); padding: 3.5rem 2rem;
+      display: grid; grid-template-columns: repeat(4,1fr);
+      gap: 1.5rem; max-width: 1100px; margin: 0 auto;
+    }
+    .step {
+      text-align: center; padding: 2rem 1.2rem;
+      background: white; border-bottom: 2px solid var(--gold);
+      transition: transform .3s; cursor: default;
+    }
+    .step:hover { transform: translateY(-4px); }
+    .step .icon { font-size: 2rem; margin-bottom: .8rem; }
+    .step h3 { font-family: var(--font-display); font-size: 1rem; font-weight: 400; margin-bottom: .5rem; }
+    .step p  { font-family: var(--font-ui); font-size: .75rem; color: var(--muted); line-height: 1.65; }
+
+    /* Scoring table */
+    .score-table { background: var(--ink); padding: 3rem 2rem; text-align: center; }
+    .score-table table { margin: 1.5rem auto; border-collapse: collapse; max-width: 500px; width: 100%; }
+    .score-table th { font-family: var(--font-ui); font-size: .65rem; letter-spacing: .2em; text-transform: uppercase; color: var(--gold); padding: .7rem 1.5rem; border-bottom: 1px solid rgba(184,150,90,.2); }
+    .score-table td { font-family: var(--font-body); font-size: .95rem; color: rgba(247,242,234,.7); padding: .7rem 1.5rem; border-bottom: 1px solid rgba(184,150,90,.08); }
+    .score-table .pts { color: var(--gold); font-family: var(--font-display); font-size: 1.2rem; font-weight: 400; }
+
+    /* Results */
+    #results-area { padding: 3rem 2rem 5rem; max-width: 1280px; margin: 0 auto; }
+    .results-header { display: flex; align-items: center; gap: 1rem; margin-bottom: 2rem; flex-wrap: wrap; }
+    #status-text { font-family: var(--font-ui); font-size: .82rem; color: var(--muted); }
+    #results-grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(260px,1fr)); gap: 1.8rem;
+    }
+    @media(max-width:768px){ .how-it-works{grid-template-columns:1fr 1fr} }
+    @media(max-width:480px){ .how-it-works{grid-template-columns:1fr} }
+  </style>
+</head>
+<body>
+<nav class="navbar">
+  <a href="index.html" class="nav-logo">Saint Martin's Abbey<span>Arts</span></a>
+  <ul class="nav-links">
+    <li><a href="index.html"       data-page="index.html">Home</a></li>
+    <li><a href="gallery.html"     data-page="gallery.html">Gallery</a></li>
+    <li><a href="artists.html"     data-page="artists.html">Artists</a></li>
+    <li><a href="exhibitions.html" data-page="exhibitions.html">Exhibitions</a></li>
+    <li><a href="contact.html"     data-page="contact.html">Contact Us</a></li>
+    <li><a href="admin.html"       data-page="admin.html">Admin</a></li>
+  </ul>
+  <div class="nav-search" id="nav-search">
+    <button class="nav-search-toggle" id="nav-search-toggle" aria-label="Search artworks">
+      <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+    </button>
+    <input class="nav-search-input" id="nav-search-input" type="text" placeholder="Search artworks…" autocomplete="off">
+    <div class="nav-search-dropdown" id="nav-search-dropdown"></div>
+  </div>
+  <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
+</nav>
+
+<div class="search-hero">
+  <div class="label" style="animation:fadeUp .8s .1s both">NLP-Powered Search</div>
+  <h1 style="font-family:var(--font-display);font-size:clamp(2rem,5vw,3.8rem);color:var(--parchment);font-weight:400;margin:.8rem 0;animation:fadeUp .8s .3s both">
+    Search by Meaning
+  </h1>
+  <p style="color:rgba(247,242,234,.5);max-width:500px;margin:.5rem auto 0;animation:fadeUp .8s .5s both">
+    Type naturally. Our engine scores artworks by how well they match your words — title, artist, medium, and description.
+  </p>
+  <div class="big-search">
+    <input id="search-input" type="text" placeholder="e.g. evening prayer, oil painting, forest at night…">
+    <button id="search-btn">Search</button>
+  </div>
+  <div class="chips">
+    <button class="chip">evening prayer</button>
+    <button class="chip">sacred light</button>
+    <button class="chip">oil on canvas</button>
+    <button class="chip">Benedictine art</button>
+    <button class="chip">nature contemplation</button>
+    <button class="chip">bell tower</button>
+  </div>
+</div>
+
+<!-- HOW IT WORKS -->
+<div style="background:var(--cream);padding:3rem 2rem">
+  <p class="label text-center" style="margin-bottom:2rem">How the Search Works</p>
+  <div class="how-it-works">
+    <div class="step reveal"><div class="icon">✍️</div><h3>1. You Type</h3><p>Enter any natural language query — a mood, theme, artist, or medium.</p></div>
+    <div class="step reveal"><div class="icon">🔤</div><h3>2. Tokenise</h3><p>We split your query into keywords and remove filler words like "the", "by", "a".</p></div>
+    <div class="step reveal"><div class="icon">📊</div><h3>3. Score</h3><p>Each keyword is matched against Title (+3), Artist (+2), Medium (+2), Description (+1).</p></div>
+    <div class="step reveal"><div class="icon">🏆</div><h3>4. Rank</h3><p>Artworks are sorted by total score. Highest score appears first.</p></div>
+  </div>
+</div>
+
+<!-- SCORING TABLE -->
+<div class="score-table reveal">
+  <div class="label" style="margin-bottom:.5rem">Scoring System</div>
+  <h2 style="font-family:var(--font-display);font-size:1.6rem;font-weight:400;color:var(--parchment);margin-bottom:.5rem">How Points are Awarded</h2>
+  <table>
+    <thead><tr><th>Field Match</th><th>Points</th><th>Why</th></tr></thead>
+    <tbody>
+      <tr><td>Title</td><td class="pts">+3</td><td>Most specific — title directly names the work</td></tr>
+      <tr><td>Artist Name</td><td class="pts">+2</td><td>Searching by creator is very intentional</td></tr>
+      <tr><td>Medium</td><td class="pts">+2</td><td>e.g. "oil painting" is a specific constraint</td></tr>
+      <tr><td>Description</td><td class="pts">+1</td><td>Broader context — least specific match</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- RESULTS -->
+<div id="results-area" style="display:none">
+  <div class="results-header">
+    <p id="status-text"></p>
+    <span id="engine-badge" style="display:none"></span>
+  </div>
+  <div id="results-grid"></div>
+</div>
+
+<footer class="site-footer">
+  <div class="footer-grid">
+    <div class="footer-brand"><h3>Saint Martin's Abbey</h3><p>5000 Abbey Way SE · Lacey, WA 98503</p></div>
+    <div class="footer-col"><h4>Navigate</h4><ul><li><a href="gallery.html">Gallery</a></li><li><a href="exhibitions.html">Exhibitions</a></li></ul></div>
+    <div class="footer-col"><h4>Tips</h4><ul><li>Use descriptive words</li><li>Try moods or themes</li><li>Artist names work</li></ul></div>
+    <div class="footer-col"><h4>Support</h4><ul><li><a href="donors.html">Donate</a></li><li><a href="contact.html">Contact Us</a></li></ul></div>
+  </div>
+  <div class="footer-bottom"><span>© 2026 Saint Martin's Abbey</span><span>Privacy Policy</span></div>
+</footer>
+<div id="toast"></div>
+<script src="js/api.js"></script>
+<script src="js/search.js"></script>
+</body>
+</html>

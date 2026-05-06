@@ -1,0 +1,19 @@
+{
+  "name": "artwork-registry",
+  "version": "1.0.0",
+  "description": "Saint Martin's Abbey — Artwork Registry",
+  "main": "backend/app.js",
+  "scripts": {
+    "start": "node --experimental-sqlite backend/app.js",
+    "dev":   "node --experimental-sqlite backend/app.js"
+  },
+  "dependencies": {
+    "cors":    "^2.8.5",
+    "dotenv":  "^16.3.1",
+    "express": "^4.18.2",
+    "multer":  "^1.4.5-lts.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  }
+}

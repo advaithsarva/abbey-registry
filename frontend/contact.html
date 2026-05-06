@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact – Saint Martin's Abbey</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<nav class="navbar">
+  <a href="index.html" class="nav-logo">Saint Martin's Abbey<span>Arts</span></a>
+  <ul class="nav-links">
+    <li><a href="index.html"       data-page="index.html">Home</a></li>
+    <li><a href="gallery.html"     data-page="gallery.html">Gallery</a></li>
+    <li><a href="artists.html"     data-page="artists.html">Artists</a></li>
+    <li><a href="exhibitions.html" data-page="exhibitions.html">Exhibitions</a></li>
+    <li><a href="contact.html"     data-page="contact.html" class="active">Contact Us</a></li>
+  </ul>
+  <div class="nav-search" id="nav-search">
+    <button class="nav-search-toggle" id="nav-search-toggle" aria-label="Search artworks">
+      <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+    </button>
+    <input class="nav-search-input" id="nav-search-input" type="text" placeholder="Search artworks…" autocomplete="off">
+    <div class="nav-search-dropdown" id="nav-search-dropdown"></div>
+  </div>
+  <a href="login.html" class="nav-login-btn">Login</a>
+  <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+</nav>
+
+<div class="page-header">
+  <p class="label">Reach Us</p>
+  <h1>Contact Us</h1>
+  <p>Questions about the arts programme, visiting, or supporting our work? We'd love to hear from you.</p>
+</div>
+
+<div class="contact-layout">
+
+  <div>
+    <h2 class="contact-title">Get in Touch</h2>
+    <div class="divider"></div>
+    <dl class="contact-info mt-3">
+      <dt>Address</dt>
+      <dd>5000 Abbey Way SE<br>Lacey, WA 98503-3200</dd>
+
+      <dt>Phone</dt>
+      <dd>000-000-0000</dd>
+
+      <dt>Events Email</dt>
+      <dd>abc@events.xyz</dd>
+
+      <dt>Gallery Hours</dt>
+      <dd>Tuesday – Sunday<br>10:00 AM – 5:00 PM</dd>
+
+      <dt>Mass Schedule</dt>
+      <dd>Mon–Fri 4:45 PM · Sat 8:00 AM · Sun 11:00 AM</dd>
+
+      <dt>Abbey Website</dt>
+      <dd>stmartinsabbey.org</dd>
+    </dl>
+  </div>
+
+  <div class="form-dark">
+    <div class="form-row">
+      <div class="form-group"><label>First Name</label><input id="fn" type="text" placeholder="Margaret"></div>
+      <div class="form-group"><label>Last Name</label><input id="ln" type="text" placeholder="Ellison"></div>
+    </div>
+    <div class="form-group"><label>Email</label><input id="em" type="email" placeholder="you@example.com"></div>
+    <div class="form-group"><label>Subject</label>
+      <select id="subj">
+        <option>Abbey Events</option>
+        <option>Gallery &amp; Exhibitions</option>
+        <option>Guesthouse &amp; Hospitality</option>
+        <option>Donations &amp; Support</option>
+        <option>General Inquiry</option>
+      </select>
+    </div>
+    <div class="form-group"><label>Message</label><textarea id="msg" rows="6" placeholder="Your message…"></textarea></div>
+    <button class="btn btn-primary btn-full" onclick="sendMsg()">Send Message</button>
+  </div>
+
+</div>
+
+<footer class="site-footer">
+  <div class="footer-grid">
+    <div class="footer-brand"><h3>Saint Martin's Abbey</h3><p>5000 Abbey Way SE · Lacey, WA 98503</p></div>
+    <div class="footer-col"><h4>Navigate</h4><ul>
+      <li><a href="gallery.html">Gallery</a></li>
+      <li><a href="exhibitions.html">Exhibitions</a></li>
+    </ul></div>
+    <div class="footer-col"><h4>Support</h4><ul><li><a href="donors.html">Donate</a></li></ul></div>
+    <div class="footer-col"><h4>Follow</h4><ul><li>Facebook</li><li>Instagram</li></ul></div>
+  </div>
+  <div class="footer-bottom"><span>© 2026 Saint Martin's Abbey</span><span>Privacy Policy</span></div>
+</footer>
+
+<div id="toast"></div>
+<script src="js/api.js"></script>
+<script>
+  function sendMsg() {
+    const name  = document.getElementById('fn').value.trim();
+    const email = document.getElementById('em').value.trim();
+    const msg   = document.getElementById('msg').value.trim();
+    if (!name || !email || !msg) { showToast('Please fill in all fields.', 'error'); return; }
+    showToast('Message sent! We will be in touch soon.');
+  }
+</script>
+</body>
+</html>

@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin – Artwork Registry</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+  <a href="index.html" class="nav-logo">Saint Martin's Abbey<span>Arts</span></a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="gallery.html">Gallery</a></li>
+    <li><a href="artists.html">Artists</a></li>
+    <li><a href="exhibitions.html">Exhibitions</a></li>
+    <li><a href="contact.html">Contact Us</a></li>
+    <li><a href="admin.html" class="active">Admin</a></li>
+    <li><button id="logout-btn" style="background:none;border:1px solid rgba(139,96,64,.4);color:var(--accent);padding:.3rem .9rem;cursor:pointer;font-family:var(--font-ui);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;border-radius:2px;transition:.2s" onmouseover="this.style.background='var(--accent)';this.style.color='white'" onmouseout="this.style.background='none';this.style.color='var(--accent)'">Log Out</button></li>
+  </ul>
+  <div class="nav-search" id="nav-search">
+    <button class="nav-search-toggle" id="nav-search-toggle" aria-label="Search artworks">
+      <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+    </button>
+    <input class="nav-search-input" id="nav-search-input" type="text" placeholder="Search artworks…" autocomplete="off">
+    <div class="nav-search-dropdown" id="nav-search-dropdown"></div>
+  </div>
+  <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+</nav>
+
+<div class="admin-shell">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="sb-grp">
+      <div class="sb-label">Overview</div>
+      <button class="sb-link active" data-tab="tab-list">◈ Dashboard</button>
+    </div>
+    <div class="sb-grp">
+      <div class="sb-label">Collection</div>
+      <button class="sb-link" data-tab="tab-add">＋ Add Artwork</button>
+      <button class="sb-link" data-tab="tab-artist">👤 Add Artist</button>
+    </div>
+    <div class="sb-grp">
+      <div class="sb-label">Site</div>
+      <a href="index.html"   class="sb-link">🏠 View Website</a>
+      <a href="gallery.html" class="sb-link">🖼 Public Gallery</a>
+    </div>
+  </aside>
+
+  <!-- MAIN CONTENT -->
+  <main class="admin-main">
+
+    <!-- TAB: DASHBOARD -->
+    <div class="tab-panel" id="tab-list" style="display:block">
+      <div class="topbar">
+        <h1>Dashboard</h1>
+        <span class="pill pill-gold">Admin · 2025–26</span>
+      </div>
+
+      <!-- Stat cards -->
+      <div class="stat-cards">
+        <div class="sc">  <div class="sc-val" id="s-total">—</div>  <div class="sc-lbl">Total Artworks</div></div>
+        <div class="sc g"><div class="sc-val" id="s-pub">—</div>    <div class="sc-lbl">Published</div></div>
+        <div class="sc b"><div class="sc-val" id="s-display">—</div><div class="sc-lbl">On Display</div></div>
+        <div class="sc r"><div class="sc-val" id="s-storage">—</div><div class="sc-lbl">In Storage</div></div>
+      </div>
+
+      <!-- Artwork table -->
+      <div class="panel">
+        <div class="panel-head">
+          <h2>All Artworks</h2>
+          <button class="btn btn-primary btn-sm" data-tab="tab-add">+ Add Artwork</button>
+        </div>
+        <div style="overflow-x:auto">
+          <table>
+            <thead>
+              <tr>
+                <th>Accession #</th>
+                <th>Title / Artist</th>
+                <th>Medium</th>
+                <th>Status</th>
+                <th>Published</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="art-tbody">
+              <tr><td colspan="6" style="text-align:center;padding:2.5rem">
+                <div class="spinner" style="margin:0 auto"></div>
+              </td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div><!-- /tab-list -->
+
+    <!-- TAB: ADD ARTWORK -->
+    <div class="tab-panel" id="tab-add">
+      <div class="topbar">
+        <h1>Add Artwork</h1>
+        <button class="btn btn-outline btn-sm" data-tab="tab-list">← Back</button>
+      </div>
+      <form class="form-wrap" id="add-form">
+
+        <div class="form-section">Core Information</div>
+        <div class="form-row">
+          <div class="form-group"><label>Accession Number *</label><input name="accession_number" type="text" placeholder="e.g. 2026-001" required></div>
+          <div class="form-group"><label>Title *</label><input name="title" type="text" placeholder="Title of the work" required></div>
+        </div>
+        <div class="form-row">
+          <div class="form-group"><label>Artist</label>
+            <select name="artist_id" id="artist-select"><option value="">— Loading… —</option></select>
+          </div>
+          <div class="form-group"><label>Date Created</label><input name="date_created" type="text" placeholder="e.g. 2024"></div>
+        </div>
+        <div class="form-row">
+          <div class="form-group"><label>Medium</label><input name="medium" type="text" placeholder="e.g. Oil on canvas"></div>
+          <div class="form-group"><label>Dimensions</label><input name="dimensions" type="text" placeholder="e.g. 92 × 73 cm"></div>
+        </div>
+        <div class="form-group"><label>Description</label><textarea name="description" rows="4" placeholder="Describe the artwork…"></textarea></div>
+        <div class="form-group">
+          <label class="pub-toggle">
+            <input name="is_published" type="checkbox">
+            <span>Publish immediately (visible in public gallery)</span>
+          </label>
+        </div>
+
+        <div class="form-section">Location &amp; Status</div>
+        <div class="form-row">
+          <div class="form-group"><label>Current Location</label><input name="current_location" type="text" placeholder="e.g. Abbey Gallery"></div>
+          <div class="form-group"><label>Status</label>
+            <select name="status">
+              <option value="">— Select —</option>
+              <option>On Display</option>
+              <option>In Storage</option>
+              <option>On Loan</option>
+              <option>Conservation</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-section">Provenance</div>
+        <div class="form-row">
+          <div class="form-group"><label>Acquisition Method</label>
+            <select name="acquisition_method">
+              <option value="">— Select —</option>
+              <option>Gift</option><option>Purchase</option>
+              <option>Commission</option><option>Bequest</option>
+            </select>
+          </div>
+          <div class="form-group"><label>Donor (if applicable)</label><input name="donor" type="text" placeholder="Donor name"></div>
+        </div>
+        <div class="form-row">
+          <div class="form-group"><label>Date Acquired</label><input name="date_acquired" type="date"></div>
+          <div class="form-group"><label>Date Appraised</label><input name="date_appraised" type="date"></div>
+        </div>
+
+        <div class="form-section">Financial</div>
+        <div class="form-row">
+          <div class="form-group"><label>Appraised Value ($)</label><input name="value" type="number" step="0.01" placeholder="0.00"></div>
+          <div class="form-group"><label>Cost / Amount Paid ($)</label><input name="cost" type="number" step="0.01" placeholder="0.00"></div>
+        </div>
+
+        <div class="form-section">Condition</div>
+        <div class="form-group"><label>Condition Notes</label><textarea name="condition_text" rows="3" placeholder="Describe the physical condition…"></textarea></div>
+
+        <div class="form-section">Image</div>
+        <div class="form-group">
+          <label>Upload Image</label>
+          <input name="image_file" type="file" accept="image/*" style="font-size:.85rem;padding:.4rem">
+        </div>
+
+        <div style="margin-top:1.5rem;display:flex;gap:0.8rem">
+          <button type="submit" class="btn btn-primary">Add Artwork</button>
+          <button type="reset"  class="btn btn-outline">Clear Form</button>
+        </div>
+      </form>
+    </div><!-- /tab-add -->
+
+    <!-- TAB: ADD ARTIST -->
+    <div class="tab-panel" id="tab-artist">
+      <div class="topbar">
+        <h1>Add Artist</h1>
+        <button class="btn btn-outline btn-sm" data-tab="tab-list">← Back</button>
+      </div>
+      <form class="form-wrap" id="artist-form" style="max-width:580px">
+        <div class="form-group"><label>Artist Name *</label><input name="artist_name" type="text" placeholder="Full name" required></div>
+        <div class="form-group"><label>Location / Origin</label><input name="artist_location" type="text" placeholder="e.g. Lacey, WA"></div>
+        <div class="form-group"><label>Biography</label><textarea name="artist_bio" rows="5" placeholder="Short artist biography…"></textarea></div>
+        <button type="submit" class="btn btn-primary">Add Artist</button>
+      </form>
+    </div><!-- /tab-artist -->
+
+  </main>
+</div>
+
+<div id="toast"></div>
+<script src="js/api.js"></script>
+<script src="js/admin.js"></script>
+<script>
+  // Tab switching — keep this simple and here so devs can see it clearly
+  document.querySelectorAll('[data-tab]').forEach(btn =>
+    btn.addEventListener('click', () => showTab(btn.dataset.tab))
+  );
+</script>
+</body>
+</html>

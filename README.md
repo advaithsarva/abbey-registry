@@ -2,64 +2,61 @@
 
 ![Architecture Diagram](architecture.png)
 
-
 ## Setup
 
-### 1. Database
-```bash
-mysql -u root -p < database/schema.sql
-mysql -u root -p < database/seed.sql
-```
-
-### 2. .env file
-Fill in your MySQL password in `.env`
-
-### 3. Node.js backend
+### 1. Install dependencies
 ```bash
 npm install
-node backend/app.js
-# opens http://localhost:3000
 ```
 
-### 4. Python NLP service (optional but recommended)
+### 2. Configure environment
+Copy `.env` and set your values:
+```
+PORT=3000
+NLP_URL=http://localhost:5000
+```
+
+### 3. Start the backend
+```bash
+node backend/app.js
+```
+The SQLite database is created and seeded automatically on first run. Open `http://localhost:3000`.
+
+### 4. Python NLP service (optional)
 ```bash
 cd nlp-service
 pip install -r requirements.txt
 python app.py
-# opens http://localhost:5000
 ```
-If Python service is offline, search automatically falls back to SQL keywords.
+If the Python service is offline, search falls back to SQL keyword matching automatically.
 
 ## NLP Search Engine
 
-### How it works:
-1. User types: `"evening prayer painting"`
-2. Clean: remove symbols → lowercase → `["evening","prayer","painting"]`
-3. Remove stop words (`the`, `by`, `a`) → `["evening","prayer","painting"]`
-4. Score each artwork:
-   - Title match      → **+3 points**
-   - Artist match     → **+2 points**
-   - Medium match     → **+2 points**
+### How it works
+1. User types a query e.g. `"evening prayer painting"`
+2. Tokenize and lowercase — remove stop words
+3. Score each artwork:
+   - Title match → **+3 points**
+   - Artist match → **+2 points**
+   - Medium match → **+2 points**
    - Description match → **+1 point**
-5. Sort by total score → highest first
-6. Return top 20
-
-### Limitations (mention these in your report):
-- No synonym detection ("art" ≠ "painting")
-- No deep semantic understanding
-- Simple word matching, not embedding-based
-- Future: TF-IDF weighting, BERT embeddings
+4. Sort by total score, return top 20
 
 ## API Endpoints
-| Method | URL | What it does |
+
+| Method | URL | Description |
 |--------|-----|-------------|
 | GET | `/api/artworks` | All artworks (admin) |
-| GET | `/api/artworks/published` | Public gallery only |
-| GET | `/api/artworks/:id` | Full artwork detail |
+| GET | `/api/artworks/published` | Published artworks only |
+| GET | `/api/artworks/:id` | Single artwork with full detail |
 | POST | `/api/artworks` | Create artwork |
-| PATCH | `/api/artworks/:id/publish` | Toggle publish |
+| PATCH | `/api/artworks/:id/publish` | Toggle publish status |
 | DELETE | `/api/artworks/:id` | Delete artwork |
-| POST | `/api/artworks/:id/image` | Upload image |
+| POST | `/api/artworks/:id/image` | Upload artwork image |
 | GET | `/api/artists` | All artists |
+| GET | `/api/artists/with-artworks` | Artists with artwork count |
+| GET | `/api/artists/:id` | Single artist with their works |
 | POST | `/api/artists` | Create artist |
-| GET | `/api/search?q=...` | NLP/keyword search |
+| GET | `/api/exhibitions` | All exhibitions |
+| POST | `/api/exhibitions` | Create exhibition (admin) |
+| GET | `/api/search?q=...` | NLP / keyword search |

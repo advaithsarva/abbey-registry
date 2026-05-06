@@ -1,5 +1,7 @@
 # Saint Martin's Abbey — Artwork Registry
 
+![Architecture Diagram](architecture.png)
+
 ## Project Structure
 ```
 abbey/

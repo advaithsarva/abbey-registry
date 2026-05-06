@@ -1,6 +1,6 @@
-# 🏛️ Saint Martin's Abbey — Artwork Registry
+# Saint Martin's Abbey — Artwork Registry
 
-## 📁 Project Structure
+## Project Structure
 ```
 abbey/
 ├── backend/
@@ -45,7 +45,7 @@ abbey/
 └── README.md
 ```
 
-## 🚀 Setup
+## Setup
 
 ### 1. Database
 ```bash
@@ -72,7 +72,7 @@ python app.py
 ```
 If Python service is offline, search automatically falls back to SQL keywords.
 
-## 🧠 NLP Search Engine
+## NLP Search Engine
 
 ### How it works:
 1. User types: `"evening prayer painting"`
@@ -92,7 +92,7 @@ If Python service is offline, search automatically falls back to SQL keywords.
 - Simple word matching, not embedding-based
 - Future: TF-IDF weighting, BERT embeddings
 
-## 📡 API Endpoints
+## API Endpoints
 | Method | URL | What it does |
 |--------|-----|-------------|
 | GET | `/api/artworks` | All artworks (admin) |

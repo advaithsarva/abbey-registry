@@ -32,15 +32,29 @@ If the Python service is offline, search falls back to SQL keyword matching auto
 
 ## NLP Search Engine
 
-### How it works
-1. User types a query e.g. `"evening prayer painting"`
-2. Tokenize and lowercase — remove stop words
-3. Score each artwork:
-   - Title match → **+3 points**
-   - Artist match → **+2 points**
-   - Medium match → **+2 points**
-   - Description match → **+1 point**
-4. Sort by total score, return top 20
+The search system is a custom two-stage retrieval pipeline built in Python (Flask), combining probabilistic ranking with fuzzy string matching for robust, typo-tolerant artwork discovery.
+
+### Pipeline
+
+**Stage 1 — Query Processing**
+- Input is tokenized, lowercased, and filtered of stop words
+- An art-domain synonym dictionary expands the query (e.g. `"painting"` → also matches `"oil"`, `"acrylic"`, `"canvas"`)
+
+**Stage 2 — Scoring**
+Each artwork is scored using two complementary methods:
+
+- **BM25Okapi** (via `rank_bm25`) — a probabilistic relevance model that accounts for term frequency and document length, applied across a weighted multi-field corpus (title repeated 3×, artist 2.5×, medium 2×, description 1×)
+- **Weighted fuzzy matching** (via `RapidFuzz`) — scores each query token against individual field tokens using edit-distance similarity, catching misspellings and partial matches above an 80% similarity threshold
+
+**Final score** combines both signals:
+```
+final = 0.6 × BM25_normalised + 0.4 × fuzzy_normalised
+```
+
+Results below a minimum relevance threshold are discarded. Top 20 ranked results are returned.
+
+### Fallback
+If the Python service is unavailable, the Node.js backend falls back to SQL `LIKE` keyword search automatically — ensuring search always works.
 
 ## API Endpoints
 

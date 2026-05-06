@@ -2,50 +2,6 @@
 
 ![Architecture Diagram](architecture.png)
 
-## Project Structure
-```
-abbey/
-├── backend/
-│   ├── controllers/
-│   │   ├── artworkController.js   ← business logic for artworks
-│   │   ├── artistController.js    ← business logic for artists
-│   │   └── searchController.js    ← calls Python NLP, SQL fallback
-│   ├── routes/
-│   │   ├── artworkRoutes.js       ← URL → controller mapping
-│   │   ├── artistRoutes.js
-│   │   └── searchRoutes.js
-│   ├── services/
-│   │   └── helper.js              ← all SQL query functions
-│   ├── app.js                     ← main server (start here)
-│   └── db.js                      ← MySQL connection
-├── database/
-│   ├── schema.sql                 ← run FIRST
-│   └── seed.sql                   ← run SECOND
-├── frontend/
-│   ├── css/style.css              ← all styles + animations
-│   ├── js/
-│   │   ├── api.js                 ← shared API + UI helpers
-│   │   ├── gallery.js             ← gallery page
-│   │   ├── artwork.js             ← single artwork page
-│   │   ├── search.js              ← NLP search page
-│   │   └── admin.js               ← admin dashboard
-│   ├── index.html
-│   ├── gallery.html
-│   ├── artwork.html
-│   ├── search.html
-│   ├── exhibitions.html
-│   ├── contact.html
-│   ├── donors.html
-│   └── admin.html
-├── nlp-service/
-│   ├── app.py                     ← Flask server (port 5000)
-│   ├── search.py                  ← NLP scoring logic
-│   └── requirements.txt
-├── uploads/                       ← artwork images go here
-├── .env                           ← your config (never commit!)
-├── package.json
-└── README.md
-```
 
 ## Setup
 
